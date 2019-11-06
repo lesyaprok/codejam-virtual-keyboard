@@ -55,9 +55,9 @@ let arr = [
     ["ControlLeft", "ctrl", "Ctrl", "Ctrl", "Ctrl"],
     ["Fn", "fn", "Fn", "Fn", "Fn"],
     ["Win", "win", "Win", "Win", "Win"],
-    ["AltLeft", "alt", "Alt", "Alt", "Alt"],
+    ["AltLeft", "Alt", "Alt", "Alt", "Alt"],
     ["Space", " ", " ", " ", " "],
-    ["AltRight", "alt", "Alt", "Alt", "Alt"],
+    ["AltRight", "Alt", "Alt", "Alt", "Alt"],
     ["ControlLeft", "ctrl", "Ctrl", "Ctrl", "Ctrl"],
     ["Left", "←", "Left", "Left", "Left"],
     ["Up", "↑", "Up", "Up", "Up"],
@@ -77,7 +77,6 @@ wrapper.append(div);
 
 let text = document.querySelector("textarea");
 text.focus();
-
 
 for (let i = 0; i < arr.length; i++) {
     let key = document.createElement('div');
@@ -100,8 +99,18 @@ for (let i = 0; i < arr.length; i++) {
     }
 }
 
+let key = document.getElementsByClassName('key');
 document.addEventListener('keydown', function (event) {
+    // Debugger;
+
+
+    for (let i = 0; i < key.length; i++) {
+        if (key[i].id == event.key) {
+            key[i].classList.add("active");
+        }
+    }
     event.preventDefault();
+
     if (event.key != 'Backspace' && event.key != 'Shift' && event.key != 'CapsLock'
         && event.key != 'Tab' && event.key != 'Enter' && event.key != 'Alt'
         && event.key != 'Control' && event.key != 'Fn' && event.key != 'Win'
@@ -125,8 +134,11 @@ document.addEventListener('keydown', function (event) {
 
 });
 
-document.addEventListener('keyup', function (event) {
-    //smth
+
+document.addEventListener('keyup', function () {
+    for (let i = 0; i < key.length; i++) {
+        key[i].classList.remove("active");
+    }
 });
 
 div.addEventListener('click', function (event) {
