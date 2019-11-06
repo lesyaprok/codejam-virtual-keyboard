@@ -99,3 +99,53 @@ for (let i = 0; i < arr.length; i++) {
         key.classList = "key shift";
     }
 }
+
+document.addEventListener('keydown', function (event) {
+    event.preventDefault();
+    if (event.key != 'Backspace' && event.key != 'Shift' && event.key != 'CapsLock'
+        && event.key != 'Tab' && event.key != 'Enter' && event.key != 'Alt'
+        && event.key != 'Control' && event.key != 'Fn' && event.key != 'Win'
+        && event.key != 'ArrowUp' && event.key != 'ArrowDown' && event.key != 'ArrowLeft'
+        && event.key != 'ArrowRight') {
+        text.value += event.key;
+    }
+
+    if (event.key == 'Backspace') {
+        text.value = text.value.slice(0, -1);
+    }
+    if (event.key == 'Tab') {
+        text.value += '    ';
+    }
+    if (event.key == 'Enter') {
+        text.value += '\n';
+    }
+
+    text.setSelectionRange(text.value.length, text.value.length);
+    text.focus();
+
+});
+
+document.addEventListener('keyup', function (event) {
+    //smth
+});
+
+div.addEventListener('click', function (event) {
+
+    if (event.target.id != 'Backspace' && event.target.id != 'Shift' && event.target.id != 'Caps lock'
+        && event.target.id != 'Tab' && event.target.id != 'Enter' && event.target.id != 'alt'
+        && event.target.id != 'ctrl' && event.target.id != 'fn' && event.target.id != 'win') {
+        text.value += event.target.id;
+    }
+    if (event.target.id == 'Backspace') {
+        text.value = text.value.slice(0, -1);
+    }
+    if (event.target.id == 'Tab') {
+        text.value += '    ';
+    }
+    if (event.target.id == 'Enter') {
+        text.value += '\n';
+    }
+
+    document.getElementById("textarea").focus();
+    text.setSelectionRange(text.value.length, text.value.length);
+});
