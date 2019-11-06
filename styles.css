@@ -49,3 +49,23 @@ textarea {
     box-shadow: -2px 3px 2px 1px rgb(102, 101, 101);
     cursor: pointer; 
 }
+
+
+.backspace,
+.capslock,
+.enter {
+    grid-column: span 4;
+}
+
+.tab,
+.slash {
+    grid-column: span 3;
+}
+
+.shift {
+    grid-column: span 5;
+}
+
+.space {
+    grid-column: span 10;
+}
